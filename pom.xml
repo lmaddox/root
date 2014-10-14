@@ -77,7 +77,7 @@
 		<addTimestamp>true</addTimestamp>
 		<connectionType>developerConnection</connectionType>
 		<includes>**</includes>
-		<excludes>**/*~,**/*.ajesym,**/*.ajsym,${project.basedir}/*.diff,**/*.git,**/*.svn,${project.basedir}/target/**</excludes>
+		<excludes>**/*~,**/*.ajesym,**/*.ajsym,**/*.diff,**/*.git,**/*.svn,**/target/**</excludes>
 		<recursive>true</recursive>
 		<runChangelog>true</runChangelog>
 		<skipCheckoutIfExists>false</skipCheckoutIfExists>
