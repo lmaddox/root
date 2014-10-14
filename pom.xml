@@ -93,7 +93,7 @@
 	</repositories>
 	<!-- <pluginRepositories></pluginRepositories> -->
 	<build>
-		<defaultGoal>clean scm:update scm:update-subprojects install site scm:add scm:checkin</defaultGoal>
+		<defaultGoal>clean scm:checkout install site scm:add scm:checkin</defaultGoal>
 		<pluginManagement>
 			<plugins>
 				<plugin>
