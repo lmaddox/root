@@ -82,7 +82,7 @@
 	</repositories>
 	<!-- <pluginRepositories></pluginRepositories> -->
 	<build>
-		<defaultGoal>clean install site</defaultGoal>
+		<defaultGoal>clean scm:update scm:update-subprojects install site scm:add scm:checkin</defaultGoal>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -105,12 +105,23 @@
 					<executions>
 						<execution>
 							<goals>
-								<!-- <goal>changelog</goal> -->
-								<!-- <goal>check-local-modification</goal> -->
-								<!-- <goal>checkout</goal> -->
-								<!-- <goal>diff</goal> -->
-								<!-- <goal>remove</goal> -->
-								<!-- <goal>status</goal> -->
+								<goal>add</goal>
+								<goal>bootstrap</goal>
+								<goal>branch</goal>
+								<goal>changelog</goal>
+								<goal>check-local-modification</goal>
+								<goal>checkin</goal>
+								<goal>checkout</goal>
+								<goal>diff</goal>
+								<goal>edit</goal>
+								<goal>export</goal>
+								<goal>list</goal>
+								<goal>remove</goal>
+								<goal>status</goal>
+								<goal>tag</goal>
+								<goal>unedit</goal>
+								<goal>update</goal>
+								<goal>update-subprojects</goal>
 							</goals>
 						</execution>
 						<execution>
@@ -119,28 +130,6 @@
 							</goals>
 							<id>default-validate</id>
 							<phase>validate</phase>
-						</execution>
-						<execution>
-							<goals>
-								<goal>update</goal>
-							</goals>
-							<id>default-update</id>
-							<phase>validate</phase>
-						</execution>
-						<execution>
-							<goals>
-								<goal>update-subprojects</goal>
-							</goals>
-							<id>default-update-subprojects</id>
-							<phase>validate</phase>
-						</execution>
-						<execution>
-							<goals>
-								<!-- <goal>add</goal> -->
-								<goal>checkin</goal>
-							</goals>
-							<id>default-checkin</id>
-							<phase>install</phase>
 						</execution>
 					</executions>
 					<inherited>true</inherited>
