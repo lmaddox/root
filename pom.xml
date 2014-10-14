@@ -71,7 +71,18 @@
 		<linkXRef>true</linkXRef>
 
 		<!-- plugins -->
+		<!-- maven-scm-plugin -->
 		<org.apache.maven.plugins.maven-scm-plugin.version>1.9.2</org.apache.maven.plugins.maven-scm-plugin.version>
+		<org.apache.maven.scm.maven-scm-provider-jgit.version>1.9.2</org.apache.maven.scm.maven-scm-provider-jgit.version>
+		<addTimestamp>true</addTimestamp>
+		<connectionType>developerConnection</connectionType>
+		<includes>**</includes>
+		<excludes>**/*~,**/*.ajesym,**/*.ajsym,${project.basedir}/*.diff,**/*.git,**/*.svn,${project.basedir}/target/**</excludes>
+		<recursive>true</recursive>
+		<runChangelog>true</runChangelog>
+		<skipCheckoutIfExists>false</skipCheckoutIfExists>
+		<skipExportIfExists>false</skipExportIfExists>
+		<username>git</username>
 	</properties>
 	<repositories>
 		<repository>
@@ -90,18 +101,31 @@
 					<artifactId>maven-scm-plugin</artifactId>
 					<version>${org.apache.maven.plugins.maven-scm-plugin.version}</version>
 					<configuration>
-						<addTimestamp>true</addTimestamp>
-						<connectionType>developerConnection</connectionType>
-						<includes>**</includes>
-						<excludes>**/target/**,**/*.ajsym,**/*.ajesym,**/.git,**/.svn,**/*.diff,**/*~</excludes>
-						<pushChanges>true</pushChanges>
-						<recursive>true</recursive>
-						<runChangelog>true</runChangelog>
-						<skipCheckoutIfExists>false</skipCheckoutIfExists>
-						<skipExportIfExists>false</skipExportIfExists>
+						<addTimestamp>${addTimestamp}</addTimestamp>
+						<connectionType>${connectionType}</connectionType>
+						<detail>${detail}</detail>
+						<excludes>${excludes}</excludes>
+						<includes>${includes}</includes>
+						<indentSize>${indentSize}</indentSize>
+						<lineLength>${lineLength}</lineLength>
+						<providerImplementations>
+							<git>jgit</git>
+						</providerImplementations>
+						<pushChanges>${pushChanges}</pushChanges>
+						<recursive>${recursive}</recursive>
+						<runChangelog>${runChangelog}</runChangelog>
+						<skipCheckoutIfExists>${skipCheckoutIfExists}</skipCheckoutIfExists>
+						<skipExportIfExists>${skipExportIfExists}</skipExportIfExists>
 						<!-- <useExport></useExport> -->
-						<username>git</username>
+						<username>${username}</username>
 					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.scm</groupId>
+							<artifactId>maven-scm-provider-jgit</artifactId>
+							<version>${org.apache.maven.scm.maven-scm-provider-jgit.version}</version>
+						</dependency>
+					</dependencies>
 					<executions>
 						<execution>
 							<goals>
