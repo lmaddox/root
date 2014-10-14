@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+			xmlns="http://maven.apache.org/POM/4.0.0"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+			                    http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.innovanon.root</groupId>
+	<artifactId>root</artifactId>
+	<version>0.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Root POM</name>
+	<description>Generic Root POM</description>
+	<url>${project.scm.url}</url>
+	<inceptionYear>2014</inceptionYear>
+	<licenses>
+		<license>
+			<!-- <comments></comments> -->
+			<distribution>repo</distribution>
+			<name>MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+		</license>
+	</licenses>
+	<organization>
+		<name>Innovanon, Inc.</name>
+		<url>https://lmaddox.dlinkddns.com</url>
+	</organization>
+	<developers>
+		<developer>
+			<email>laurence.a.maddox@gmail.com</email>
+			<id>lmaddox</id>
+			<name>Laurence Alexander Maddox</name>
+			<organization>Innovanon, Inc.</organization>
+			<organizationUrl>https://lmaddox.dlinkddns.com</organizationUrl>
+			<roles>
+				<role>AspectJ Developer</role>
+				<role>Java Developer</role>
+				<role>Maven Developer</role>
+				<role>Lead Developer</role>
+				<role>Lead Engineer</role>
+				<role>Project Manager</role>
+				<role>Software Architect</role>
+				<role>Software Engineer</role>
+			</roles>
+			<timezone>-6</timezone>
+			<url>https://lmaddox.dlinkddns.com</url>
+		</developer>
+	</developers>
+	<!-- <ciManagement> -->
+	<!-- <distributionManagement></distributionManagement> -->
+	<!-- <issueManagement> -->
+	<scm>
+		<tag>MASTER</tag>
+		<connection>scm:git:ssh://git@github.com:lmaddox/${project.artifactId}</connection>
+		<developerConnection>scm:git:github.com:lmaddox/${project.artifactId}</developerConnection>
+		<url>https://github.com/lmaddox/${project.artifactId}</url>
+	</scm>
+	<!-- <profiles></profiles> -->
+	<properties>
+		<!-- use traditional formatting -->
+		<indentSize>3</indentSize>
+		<lineLength>80</lineLength>
+
+		<!-- silence is golden -->
+		<detail>${verbose}</detail>
+		<maven.verbose>${verbose}</maven.verbose>
+		<verbose>false</verbose>
+
+		<!-- cross-link source code -->
+		<linkXRef>true</linkXRef>
+
+		<!-- plugins -->
+		<org.apache.maven.plugins.maven-scm-plugin.version>1.9.2</org.apache.maven.plugins.maven-scm-plugin.version>
+	</properties>
+	<repositories>
+		<repository>
+			<id>jfrog-plugins</id>
+			<name>jfrog-plugins-dist</name>
+			<url>http://repo.jfrog.org/artifactory/plugins-releases</url>
+		</repository>
+	</repositories>
+	<!-- <pluginRepositories></pluginRepositories> -->
+	<build>
+		<defaultGoal>clean install site</defaultGoal>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-plugin</artifactId>
+					<version>${org.apache.maven.plugins.maven-scm-plugin.version}</version>
+					<configuration>
+						<addTimestamp>true</addTimestamp>
+						<connectionType>developerConnection</connectionType>
+						<includes>**</includes>
+						<excludes>**/target/**,**/*.ajsym,**/*.ajesym,**/.git,**/.svn,**/*.diff,**/*~</excludes>
+						<pushChanges>true</pushChanges>
+						<recursive>true</recursive>
+						<runChangelog>true</runChangelog>
+						<skipCheckoutIfExists>false</skipCheckoutIfExists>
+						<skipExportIfExists>false</skipExportIfExists>
+						<!-- <useExport></useExport> -->
+						<username>git</username>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<!-- <goal>changelog</goal> -->
+								<!-- <goal>check-local-modification</goal> -->
+								<!-- <goal>checkout</goal> -->
+								<!-- <goal>diff</goal> -->
+								<!-- <goal>remove</goal> -->
+								<!-- <goal>status</goal> -->
+							</goals>
+						</execution>
+						<execution>
+							<goals>
+								<goal>validate</goal>
+							</goals>
+							<id>default-validate</id>
+							<phase>validate</phase>
+						</execution>
+						<execution>
+							<goals>
+								<goal>update</goal>
+							</goals>
+							<id>default-update</id>
+							<phase>validate</phase>
+						</execution>
+						<execution>
+							<goals>
+								<goal>update-subprojects</goal>
+							</goals>
+							<id>default-update-subprojects</id>
+							<phase>validate</phase>
+						</execution>
+						<execution>
+							<goals>
+								<!-- <goal>add</goal> -->
+								<goal>checkin</goal>
+							</goals>
+							<id>default-checkin</id>
+							<phase>install</phase>
+						</execution>
+					</executions>
+					<inherited>true</inherited>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	<!-- <dependencyManagement> -->
+	<!-- <reporting>
+		<plugins>
+			<plugin>
+			</plugin>
+		</plugins>
+	</reporting> -->
+</project>
